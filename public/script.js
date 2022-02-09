@@ -52,3 +52,44 @@ musicBtn.addEventListener("click", function() {
         musicStatus.innerHTML = "music is <span class='red'>off</span>"
     }
 })
+
+// const awindow = document.querySelector("body")
+
+// document.addEventListener("scroll", function() {
+//     if(document.body.clientWidth <= 700) {
+//         // if(awindow.scrollTop > 100) {
+//         //     // this.location.href = "#about-me"
+//         //     console.log('h')
+//         // }
+//         y = awindow.scrollTop
+//         console.log(y);
+//     }
+// })
+
+const menuBtn = document.querySelector("#menuBtn")
+
+menuBtn.addEventListener("click", function() {
+    if(document.body.clientWidth <= 700) {
+        document.querySelector(".side-navigation").classList.add("active")
+        document.querySelector("#overlay").classList.add("overlay")
+    }
+})
+
+const ov = document.querySelector("#overlay")
+
+ov.addEventListener("click", function() {
+    if(document.body.clientWidth <= 700) {
+        document.querySelector(".side-navigation").classList.remove("active")
+        document.querySelector("#overlay").classList.remove("overlay")
+    }
+})
+
+
+setInterval(function() {
+    if(music.paused == true) {
+        document.querySelector("#music-btn").style.animation = "bounce 1s ease-in forwards infinite alternate"
+        // document.querySelector("#music-btn").style.transform = "translateY(-20px)"
+    } else {
+        document.querySelector("#music-btn").style.animation = ""
+    }
+}, 100)
