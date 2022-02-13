@@ -123,7 +123,7 @@ body {
 }
 
 .title-container {
-    padding: 10px 5%;
+    padding: 30px 5%;
 }
 
 .title {
@@ -150,10 +150,6 @@ body {
     justify-content: center;
 }
 
-#projects {
-    height: 100vh;
-}
-
 .overlay {
     position: fixed; /* Sit on top of the page content */
     display: block; /* Hidden by default */
@@ -174,6 +170,68 @@ body {
     }
 }
 
+#projects {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.slider-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider {
+    position: relative;
+    width: 45em;
+    height: 30em;
+    border: 2px solid white;
+    /* overflow: hidden; */
+}
+
+.slide {
+    width: 100%;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: 150ms opacity ease-in-out;
+    transition-delay: 150ms;
+}
+
+.slide[data-active] {
+    opacity: 1;
+    transition-delay: 0ms;
+}
+
+.slider-nav {
+    margin: 30px auto;
+}
+
+.slider-nav-btn {
+    width: 25px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 15px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+/* .slider-nav-btn:hover {
+    background: white;
+} */
+
+.arrow {
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    color: white;
+    font-size: 2em;
+    font-weight: 800;
+    margin: 10px;
+}
 
 @media (max-width: 1045px) {
     .intro-letters {

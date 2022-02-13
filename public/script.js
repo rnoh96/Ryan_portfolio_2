@@ -3,7 +3,8 @@ let musicBtn = document.querySelector("#music-btn")
 let music = document.querySelector("#music")
 let musicStatus = document.querySelector("#music-status")
 let letters = document.querySelectorAll(".intro-letters")
-let title = document.querySelectorAll(".title")
+let aboutTitle = document.querySelectorAll(".about-me > .title")
+let projectsTitle = document.querySelectorAll(".projects > .title")
 
 let intervals = []
 
@@ -23,48 +24,24 @@ function words(element, letterCount, time1, time2) {
 
 musicBtn.addEventListener("click", function() {
     if(music.paused == true) {
-        // words = setInterval(function(){
-        //     let randNumLetters = Math.floor(Math.random() * 23);
-        //     let randNumTitle = Math.floor(Math.random() * 7);
-        //     letters[randNumLetters].style.color = "aqua";
-        //     letters[randNumLetters].style.bottom = "10px";
-        //     title[randNumTitle].style.color = "aqua";
-        //     title[randNumTitle].style.bottom = "10px";
-        //     setTimeout(function() {
-        //         letters[randNumLetters].style.color = "white";
-        //         letters[randNumLetters].style.bottom = "0px";
-        //         title[randNumTitle].style.color = "white";
-        //         title[randNumTitle].style.bottom = "0px";
-        //     }, 1000)
-        // }, 300)
         words(letters, 23, 1000, 300)
-        words(title, 7, 1000, 1000)
+        words(aboutTitle, 7, 1000, 500)
+        words(projectsTitle, 8, 1000, 500)
 
         music.play()
     
-        musicStatus.innerHTML = "music is <span class='red'>on</span>"
+        musicStatus.innerHTML = "Music is <span class='red'>on</span>"
     } else {
         music.pause()
 
         intervals.forEach(clearInterval)
         // clearInterval(titleAnimation)
 
-        musicStatus.innerHTML = "music is <span class='red'>off</span>"
+        musicStatus.innerHTML = "Music is <span class='red'>off</span>"
     }
 })
 
-// const awindow = document.querySelector("body")
-
-// document.addEventListener("scroll", function() {
-//     if(document.body.clientWidth <= 700) {
-//         // if(awindow.scrollTop > 100) {
-//         //     // this.location.href = "#about-me"
-//         //     console.log('h')
-//         // }
-//         y = awindow.scrollTop
-//         console.log(y);
-//     }
-// })
+/////////////////////////////////////////////////////////////////////////////////////////
 
 const menuBtn = document.querySelector("#menuBtn")
 
@@ -74,6 +51,8 @@ menuBtn.addEventListener("click", function() {
         document.querySelector("#overlay").classList.add("overlay")
     }
 })
+
+/////////////////////////////////////////////////////////////////////////////////////////
 
 const ov = document.querySelector("#overlay")
 
@@ -93,3 +72,50 @@ setInterval(function() {
         document.querySelector("#music-btn").style.animation = ""
     }
 }, 100)
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+// slider  -------- FIXME
+let slide = document.querySelector(".slider")
+let left = document.querySelector(".left-arrow")
+let right = document.querySelector(".right-arrow")
+
+// slider nav
+let sliderNav = document.querySelector(".slider-nav")
+let numBtn = slide.children.length
+
+for(let i=0; i < numBtn; i++) {
+    sliderNav.innerHTML += "<button class='slider-nav-btn'></button>"
+}
+
+sliderNav.children[0].style.background = "white"
+
+
+// slider event listeners
+right.addEventListener("click", function() {
+    let activeSlide = slide.querySelector("[data-active]")
+    let currentIndex = [...slide.children].indexOf(activeSlide)
+    let newIndex = [...slide.children].indexOf(activeSlide) + 1
+    if(newIndex >= slide.children.length) {
+        newIndex = 0
+    }
+    delete activeSlide.dataset.active
+    slide.children[newIndex].dataset.active = true
+    sliderNav.children[currentIndex].style.background = "rgba(255, 255, 255, 0.7)"
+    sliderNav.children[newIndex].style.background = "white"
+})
+
+left.addEventListener("click", function() {
+    let activeSlide = slide.querySelector("[data-active]")
+    let currentIndex = [...slide.children].indexOf(activeSlide)
+    let newIndex = [...slide.children].indexOf(activeSlide) - 1
+    if(newIndex < 0) {
+        newIndex = slide.children.length -1
+    }
+    delete activeSlide.dataset.active
+    slide.children[newIndex].dataset.active = true
+    sliderNav.children[currentIndex].style.background = "rgba(255, 255, 255, 0.7)"
+    sliderNav.children[newIndex].style.background = "white"
+})
+
+
