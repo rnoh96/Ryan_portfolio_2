@@ -71,7 +71,7 @@ setInterval(function() {
     } else {
         document.querySelector("#music-btn").style.animation = ""
     }
-}, 100)
+}, 1000)
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -118,4 +118,32 @@ left.addEventListener("click", function() {
     sliderNav.children[newIndex].style.background = "white"
 })
 
+/////////////////////////////////////////////////////////////////////////////////////////
 
+//mousemove
+
+let mousemove = document.querySelector(".main-page")
+
+function move(event) {
+    let x = (event.clientX-this.offsetLeft),
+        y = (event.clientY-this.offsetLeft);
+
+    let el = document.createElement("span");
+    el.setAttribute("class", "el-child")
+    el.style.left = `${x}px`;
+    el.style.top = `${y}px`;
+
+    this.appendChild(el);
+
+    setTimeout(() => {
+        el.remove()
+    }, 700)
+}
+
+setInterval(function() {
+    if(music.paused == false) {
+        mousemove.addEventListener("mousemove", move)
+    } else {
+        mousemove.removeEventListener("mousemove", move)
+    }
+}, 500)

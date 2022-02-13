@@ -60,6 +60,7 @@ body {
 
 .main-page {
     margin-left: 100px;
+    position: relative;
 }
 
 #music-btn{
@@ -101,10 +102,10 @@ body {
     transition: all .45s;
 }
 
-.intro-letters:hover {
+/* .intro-letters:hover {
     color: aqua;
     bottom: 10px;
-}
+} */
 
 .space {
     padding: 15px;
@@ -162,6 +163,7 @@ body {
     background-color: rgba(0,0,0,0.8); /* Black background with opacity */
     z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
+    z-index: 3;
   }
 
 @keyframes bounce {
@@ -185,10 +187,10 @@ body {
 
 .slider {
     position: relative;
-    width: 45em;
-    height: 30em;
+    width: 40em;
+    height: 25em;
     border: 2px solid white;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .slide {
@@ -233,6 +235,35 @@ body {
     margin: 10px;
 }
 
+.el-child {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    position: absolute;
+    border: 2px solid white;
+    border-radius: 50%;
+    animation: anime 1s linear infinite;
+}
+
+@keyframes anime {
+    0% {
+        width: 0px;
+        height: 0px;
+        border-color: red
+    }
+    33% {
+        border-color: orange;
+    }
+    66% {
+        border-color: aqua;
+    }
+    100% {
+        width: 100px;
+        height: 100px;
+        border-color: aqua;
+    }
+}
+
 @media (max-width: 1045px) {
     .intro-letters {
         font-size: 4em;
@@ -257,15 +288,22 @@ body {
     .space {
         padding: 10px;
     }
+
+    .slider {
+        width: 30em;
+        height: 20em;
+    }
 }
 
 @media (max-width: 700px) {
     #menuBtn {
         display: block;
+        z-index: 2;
     }
 
     #music-btn {
         top: 5vh;
+        z-index: 2;
     }
 
     #music-status {
@@ -304,7 +342,7 @@ body {
     .side-navigation {
         left: -100%;
         transition: all .5s;
-        z-index: 2;
+        z-index: 3;
     }
 
     .side-navigation.active {
@@ -313,6 +351,11 @@ body {
 
     .space {
         padding: 5px;
+    }
+
+    .slider {
+        width: 20em;
+        height: 8em;
     }
 
 }
