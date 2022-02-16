@@ -147,3 +147,12 @@ setInterval(function() {
         mousemove.removeEventListener("mousemove", move)
     }
 }, 500)
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+// music volume
+let vid = document.getElementById("music");
+vid.volume = 0.3;
+
+alert("Hello, thank you for visiting my website. Please try the music (on top right corner) to see cool animation effects :)")
+
